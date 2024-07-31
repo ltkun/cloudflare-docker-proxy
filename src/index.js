@@ -30,6 +30,19 @@ function routeByHosts(host) {
   return "";
 }
 
+import DOCS from './help.html'
+ 
+// return docs
+if (url.pathname === "/") {
+  return new Response(DOCS, {
+    status: 200,
+    headers: {
+      "content-type": "text/html"
+    }
+  });
+}
+
+
 async function handleRequest(request) {
   const url = new URL(request.url);
   const upstream = routeByHosts(url.hostname);
